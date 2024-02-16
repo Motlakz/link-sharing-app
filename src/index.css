@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -7,7 +11,97 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+button {
+  transition: all .4s ease-in-out;
+}
+
+form {
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  max-width: 575px;
+  width: 100%;
+}
+
+form input {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  overflow-x: hidden;
+
+}
+
+form input:focus {
+  animation: glow-hover 2s infinite;
+}
+
+input[type="email"]::placeholder,
+input[type="password"]::placeholder {
+    position: absolute;
+    transform: translateY(-0%);
+    will-change: transform;
+    transition: transform .200s ease-in-out;
+}
+
+input[type="email"]:focus::placeholder,
+input[type="password"]:focus::placeholder {
+    transform: translateY(-150%);
+}
+
+.big-nav .middle-btns button {
+  width: 160px;
+}
+
+.link-text {
+  transition: text-shadow .4s ease;
+}
+
+.link-text:hover {
+  text-shadow: .5px .5px .5px teal;
+}
+
+.bg-gradient {
+  background: linear-gradient(to right, #f9fafb, #e3e3e3);
+}
+
+.slit-in-hr {
+  animation: slit-in-horizontal .5s ease forwards;
+}
+
+@keyframes glow-hover {
+  0% {
+      box-shadow: 0 0 5px rgb(6 182 212);
+  }
+
+  50% {
+      box-shadow: 0 0 20px rgb(6 182 212), 0 0 7.5px rgb(6 182 212);
+  }
+
+  100% {
+      box-shadow: 0 0 5px rgb(6 182 212);
+  }
+}
+
+@keyframes slit-in-horizontal {
+  0% {
+    -webkit-transform: translateZ(-800px) rotateX(90deg);
+            transform: translateZ(-800px) rotateX(90deg);
+    opacity: 0;
+  }
+  54% {
+    -webkit-transform: translateZ(-160px) rotateX(87deg);
+            transform: translateZ(-160px) rotateX(87deg);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateZ(0) rotateX(0);
+            transform: translateZ(0) rotateX(0);
+  }
+}
+
+@media (width <= 768px) {
+  .logo figure img {
+    width: 120px;
+  }
+
+  nav {
+    font-size: small;
+    padding: 0 !important;
+  }
 }
