@@ -32,7 +32,7 @@ function Navigation() {
   const isLoginOrSignUp = location.pathname === '/login' || location.pathname === '/signup';
 
   return (
-    <div className="App flex flex-col items-center justify-center bg-gradient min-h-screen">
+    <div className="App flex flex-col items-center bg-gradient relative min-h-screen">
       {/* Conditionally render HeaderLoggedOut for /login and /signup */}
       {isLoginOrSignUp ? (
         <HeaderLoggedOut />

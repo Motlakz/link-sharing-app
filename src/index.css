@@ -2,6 +2,130 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400&family=Quicksand&display=swap');
+
+.select-wrapper {
+    position: relative;
+    user-select: none;
+    width: 100%;
+}
+
+.select {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.select__trigger {
+    border-radius: 12px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 300;
+    color: red;
+    height: 60px;
+    line-height: 60px;
+    background: lightcyan;
+    cursor: pointer;
+    border: 1px solid gray;
+}
+
+.custom-options {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+    position: absolute;
+    display: block;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 5px;
+    border-top: 0;
+    border-radius: 8px;
+    background: #fff;
+    transition: all 0.5s ease;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 2;
+}
+
+.select.open .custom-options {
+    opacity: 1;
+    visibility: visible;
+}
+
+.custom-option {
+    position: relative;
+    display: block;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: 300;
+    color: #333;
+    cursor: pointer;
+    background: linear-gradient(to right, white 50%, transparent 10%);
+    background-size: 200% 100%;
+    transition: background-position 0.3s ease;
+}
+
+.custom-option:hover {
+    background-position: -100% 0;
+    color: #fff;
+}
+
+.arrow {
+    position: relative;
+    height: 15px;
+    width: 15px;
+}
+
+.arrow::before,
+.arrow::after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    width: 0.15rem;
+    height: 100%;
+    transition: all 0.5s;
+}
+
+.arrow::before {
+    left: -5px;
+    transform: rotate(45deg);
+    background-color: red;
+}
+
+.arrow::after {
+    left: 5px;
+    transform: rotate(-45deg);
+    background-color: blueviolet;
+}
+
+.open .arrow::before {
+    left: -5px;
+    transform: rotate(-45deg);
+}
+
+.open .arrow::after {
+    left: 5px;
+    transform: rotate(45deg);
+}
+
+span.icon {
+    border-radius: 50%;
+    color: peachpuff;
+    text-shadow: 2px 2px 2px blueviolet;
+    padding: 4px;
+}
+
+@media screen and (max-width: 768px) {
+  .inputs {
+      flex-direction: column;
+      padding: 20px;
+  }
+}
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -60,8 +184,16 @@ input[type="password"]:focus::placeholder {
   background: linear-gradient(to right, #f9fafb, #e3e3e3);
 }
 
+.scale-in-top {
+  animation: scale-in-top .5s ease forwards;
+}
+
 .slit-in-hr {
   animation: slit-in-horizontal .5s ease forwards;
+}
+
+.slit-in-vr {
+  animation: slit-in-vertical .5s ease forwards;
 }
 
 @keyframes glow-hover {
@@ -75,6 +207,40 @@ input[type="password"]:focus::placeholder {
 
   100% {
       box-shadow: 0 0 5px rgb(6 182 212);
+  }
+}
+
+@keyframes scale-in-top {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    -webkit-transform-origin: 50% 0%;
+            transform-origin: 50% 0%;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-transform-origin: 50% 0%;
+            transform-origin: 50% 0%;
+    opacity: 1;
+  }
+}
+
+@keyframes slit-in-vertical {
+  0% {
+    -webkit-transform: translateZ(-800px) rotateY(90deg);
+            transform: translateZ(-800px) rotateY(90deg);
+    opacity: 0;
+  }
+  54% {
+    -webkit-transform: translateZ(-160px) rotateY(87deg);
+            transform: translateZ(-160px) rotateY(87deg);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateZ(0) rotateY(0);
+            transform: translateZ(0) rotateY(0);
   }
 }
 
@@ -92,6 +258,12 @@ input[type="password"]:focus::placeholder {
   100% {
     -webkit-transform: translateZ(0) rotateX(0);
             transform: translateZ(0) rotateX(0);
+  }
+}
+
+@media (width <= 1140px) {
+  .mockup {
+    padding-top: 3.5rem !important;
   }
 }
 

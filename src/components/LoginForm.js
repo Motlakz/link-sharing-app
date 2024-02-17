@@ -18,7 +18,7 @@ function LoginForm({ onLogin }) {
   };
 
   return (
-    <form onSubmit={handleSubmit(handleLogin)} className="slit-in-hr p-8 bg-white rounded-xl mb-10">
+    <form onSubmit={handleSubmit(handleLogin)} className="slit-in-hr p-8 bg-white rounded-xl">
       <article className="mb-6">
         <legend className="font-semibold text-xl mb-4">Login</legend>
         <p className="text-gray-400">Add your details below to get back into the app</p>
@@ -34,7 +34,7 @@ function LoginForm({ onLogin }) {
         <p className="text-gray-400">Don't have an account?</p>
         <span className="link-text cursor-pointer text-cyan-500" onClick={() => navigate('/signup')}>Create Account</span>
       </article>
-    </form>
+    </form>    
   );
 }
 

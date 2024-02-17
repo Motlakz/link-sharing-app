@@ -24,7 +24,7 @@ function Header({ isLoggedIn }) {
   return (
     <>
       {isLoggedIn ? (
-        <header className="w-full bg-white rounded-lg p-4">
+        <header className="w-full bg-white rounded-lg p-4 animate__animated animate__backInDown">
           {isMobile ? (
             // Mobile navigation for logged-in user
             <nav className="flex items-center justify-between">
@@ -76,9 +76,9 @@ function Header({ isLoggedIn }) {
           )}
         </header>
       ) : (
-        // Header for non-logged-in user
-        <header>
-          <nav className="p-8">
+        // Header for logged-out user
+        <header className="animate__animated animate__backInDown">
+          <nav  className="p-8">
             <div className="logo">
               <figure>
                 <img src={Logo} alt="" />
